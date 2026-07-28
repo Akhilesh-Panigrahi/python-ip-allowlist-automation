@@ -1,88 +1,88 @@
 # 🛡️ Python IP Allow List Automation
 
-> Automating secure IP allow list management using Python to maintain access control and reduce manual administrative effort.
+> A Python-based security automation tool that updates an organization's IP allow list by removing unauthorized IP addresses while demonstrating secure file handling, access control, and automation best practices.
 
-![Python](https://img.shields.io/badge/Python-3.x-blue)
-![Cybersecurity](https://img.shields.io/badge/Domain-Cybersecurity-green)
-![Automation](https://img.shields.io/badge/Focus-Security%20Automation-orange)
-![License](https://img.shields.io/badge/License-MIT-yellow)
-
----
-
-# Project Overview
-
-Managing IP allow lists manually can become time-consuming and error-prone, especially as organizations grow and access requirements change. This project demonstrates how Python can automate the process of maintaining an IP allow list by removing unauthorized IP addresses from an existing allow list.
-
-Originally completed as part of the **Google Cybersecurity Professional Certificate**, this repository expands upon the coursework by organizing the project into a professional GitHub repository with improved documentation, project structure, and maintainable source code.
+![Python](https://img.shields.io/badge/Python-3.x-blue?logo=python)
+![Status](https://img.shields.io/badge/Status-Completed-success)
+![License](https://img.shields.io/badge/License-MIT-green)
+![Domain](https://img.shields.io/badge/Domain-Cybersecurity-red)
 
 ---
 
-# Scenario
+## 📖 Overview
 
-An organization maintains a list of authorized IP addresses that are allowed to access restricted resources.
+Managing access control lists manually can be repetitive and error-prone. In many organizations, security analysts are responsible for maintaining lists of authorized systems and users that are permitted to access protected resources.
 
-Over time, some users no longer require access. Instead of manually editing the allow list, a security analyst uses a Python script to:
+This project automates that process by reading an existing IP allow list, comparing it against a list of IP addresses that should no longer have access, removing unauthorized entries, and generating an updated allow list.
 
-* Read the existing allow list
-* Compare it against a list of IP addresses that should be removed
-* Remove unauthorized entries
-* Generate an updated allow list
-
-Automating this process helps reduce administrative effort while minimizing the risk of human error.
+Originally completed as part of the **Google Cybersecurity Professional Certificate**, this repository has been redesigned into a **Portfolio Edition** project with improved code quality, documentation, repository structure, and maintainability.
 
 ---
 
-# Objectives
+## 🎯 Project Objectives
 
-* Automate allow list maintenance
-* Demonstrate Python file handling
-* Apply basic security automation concepts
-* Improve accuracy by reducing manual edits
-* Reinforce access control best practices
-
----
-
-# Skills Demonstrated
-
-* Python Programming
-* Security Automation
-* File Input/Output (I/O)
-* String Manipulation
-* List Operations
-* Access Control
-* Secure Administration
-* Basic Scripting
+- Automate IP allow list maintenance
+- Reduce manual administrative work
+- Demonstrate Python file handling
+- Apply access control concepts
+- Showcase security automation using Python
+- Build a portfolio-ready cybersecurity project
 
 ---
 
-# Technologies Used
+## 🏢 Real-World Scenario
 
-| Technology | Purpose                           |
-| ---------- | --------------------------------- |
-| Python 3   | Automation scripting              |
-| Text Files | Store allow list data             |
-| Git        | Version control                   |
-| GitHub     | Project hosting and documentation |
+A security administrator maintains an allow list containing IP addresses that are authorized to access sensitive company resources.
+
+When employees leave the organization or no longer require access, their IP addresses must be removed from the allow list.
+
+Instead of manually editing the file every time changes occur, this project automates the entire process.
 
 ---
 
-# Project Structure
+## ⚙️ Features
 
-```text
-python-ip-allowlist-automation/
+- Reads an existing allow list
+- Reads a remove list
+- Compares both datasets
+- Removes unauthorized IP addresses
+- Generates an updated allow list
+- Preserves clean file formatting
+- Modular and readable Python code
+- Error handling
+- Logging support
+- Sample data included
+
+---
+
+## 🛠 Technologies Used
+
+| Technology | Purpose |
+|------------|---------|
+| Python 3 | Automation |
+| Git | Version Control |
+| GitHub | Repository Hosting |
+| Text Files | Data Storage |
+
+---
+
+## 📂 Repository Structure
+
+```
+python-ip-allowlist-automation
 │
 ├── README.md
 ├── LICENSE
 ├── .gitignore
-│
-├── docs/
-│   └── Original_Google_Project.pdf
 │
 ├── src/
 │   ├── update_allowlist.py
 │   ├── allow_list.txt
 │   ├── remove_list.txt
 │   └── updated_allow_list.txt
+│
+├── docs/
+│   └── Original_Google_Project.pdf
 │
 ├── diagrams/
 │   └── workflow.png
@@ -92,135 +92,182 @@ python-ip-allowlist-automation/
 │   ├── terminal-output.png
 │   └── after.png
 │
-└── assets/
-    └── banner.png
+├── assets/
+│   └── banner.png
+│
+└── tests/
+    ├── sample_allow_list.txt
+    └── sample_remove_list.txt
 ```
 
 ---
 
-# Workflow
+## 🔄 Workflow
 
-```text
-Read allow_list.txt
-          │
-          ▼
-Read remove_list.txt
-          │
-          ▼
-Compare IP Addresses
-          │
-          ▼
-Remove Unauthorized Entries
-          │
-          ▼
-Write Updated Allow List
-          │
-          ▼
-Process Complete
+```
+             allow_list.txt
+                    │
+                    ▼
+          Read File into Memory
+                    │
+                    ▼
+          Read remove_list.txt
+                    │
+                    ▼
+         Compare IP Addresses
+                    │
+                    ▼
+      Remove Unauthorized Entries
+                    │
+                    ▼
+      Generate Updated Allow List
+                    │
+                    ▼
+      updated_allow_list.txt
 ```
 
 ---
 
-# Example Input
+## 🚀 Getting Started
 
-### allow_list.txt
+### Clone the repository
 
-```text
-192.168.1.10
-192.168.1.11
-192.168.1.12
-192.168.1.13
+```bash
+git clone https://github.com/YOUR_USERNAME/python-ip-allowlist-automation.git
 ```
 
-### remove_list.txt
+### Navigate into the project
 
-```text
-192.168.1.11
-192.168.1.13
+```bash
+cd python-ip-allowlist-automation
 ```
 
----
+### Run the application
 
-# Example Output
-
-```text
-192.168.1.10
-192.168.1.12
+```bash
+python src/update_allowlist.py
 ```
 
 ---
 
-# How It Works
+## 📋 Example
 
-1. Read the current allow list.
-2. Load the list of IP addresses to remove.
-3. Compare both datasets.
-4. Remove matching IP addresses.
-5. Save the updated allow list.
-6. Confirm successful execution.
+### Input
 
----
+**allow_list.txt**
 
-# Security Concepts
+```
+192.168.10.25
+192.168.10.31
+172.16.0.15
+10.0.0.8
+203.0.113.55
+```
 
-This project demonstrates several foundational cybersecurity concepts:
+**remove_list.txt**
 
-* Principle of Least Privilege
-* Access Control Management
-* Administrative Automation
-* Data Integrity
-* Secure Configuration Management
-* Operational Efficiency
-
-Although the project uses a simplified example, these same concepts are commonly applied in enterprise environments to automate administrative security tasks.
+```
+172.16.0.15
+203.0.113.55
+```
 
 ---
 
-# Repository Contents
+### Output
 
-| Folder      | Description                         |
-| ----------- | ----------------------------------- |
-| docs        | Original coursework PDF             |
-| src         | Python source code and sample files |
-| diagrams    | Workflow diagrams                   |
-| screenshots | Demonstration images                |
-| assets      | Repository graphics                 |
+```
+192.168.10.25
+192.168.10.31
+10.0.0.8
+```
 
 ---
 
-# Lessons Learned
+## 🔒 Cybersecurity Concepts Demonstrated
 
-During this project I gained practical experience with:
-
-* Reading and writing files using Python
-* Automating repetitive security tasks
-* Working with lists and string manipulation
-* Organizing scripts for maintainability
-* Applying automation to access control processes
-
----
-
-# Future Improvements
-
-Potential enhancements include:
-
-* Support for IPv6 addresses
-* IP address validation using Python's `ipaddress` module
-* Command-line arguments with `argparse`
-* Timestamped audit logging
-* Export change reports to JSON or CSV
-* Automated unit testing
-* Interactive command-line interface
-* Improved error handling and logging
+- Access Control
+- Security Automation
+- Least Privilege
+- Administrative Scripting
+- Configuration Management
+- File Integrity
+- Secure File Handling
 
 ---
 
-# Acknowledgment
+## 💡 Why This Project Matters
 
-The original project scenario was completed as part of the **Google Cybersecurity Professional Certificate**. This repository reorganizes and expands the original coursework into a portfolio-ready project with enhanced documentation and presentation while preserving the underlying learning objectives.
+Even simple automation scripts can save security teams significant time by eliminating repetitive administrative work.
+
+Automating routine security tasks also reduces the likelihood of human error, helping organizations maintain accurate access control records while improving operational efficiency.
+
+Although simplified for educational purposes, the same concepts demonstrated in this project are commonly used in enterprise cybersecurity environments.
 
 ---
 
-# License
+## 📚 Skills Demonstrated
 
-This project is licensed under the MIT License. See the `LICENSE` file for more information.
+- Python Programming
+- File Input / Output
+- String Manipulation
+- Lists
+- Loops
+- Conditional Logic
+- Functions
+- Security Automation
+- Access Control
+
+---
+
+## 📈 Portfolio Enhancements
+
+Compared to the original coursework, this Portfolio Edition includes:
+
+- Professional repository organization
+- Improved project documentation
+- Modular Python implementation
+- Better code readability
+- Error handling
+- Logging
+- Workflow diagram
+- Screenshots
+- Sample data
+- Future improvement roadmap
+
+---
+
+## 🔮 Future Improvements
+
+- IPv6 support
+- IP address validation
+- Command-line interface
+- Audit logging
+- CSV import/export
+- JSON reporting
+- Unit tests
+- Docker container
+- GitHub Actions automation
+
+---
+
+## 📝 Professional Reflection
+
+Maintaining accurate access control records is a fundamental responsibility in cybersecurity. This project demonstrates how Python can automate repetitive administrative tasks, reducing manual effort while improving consistency and accuracy.
+
+Transforming the original coursework into a portfolio-ready project also provided an opportunity to apply software engineering best practices, including modular design, documentation, and maintainable code organization.
+
+---
+
+## 🙏 Acknowledgment
+
+This project is based on an assignment from the **Google Cybersecurity Professional Certificate**.
+
+The original assignment has been expanded into a portfolio-quality project for educational and professional showcase purposes.
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+See the LICENSE file for more information.
