@@ -1,223 +1,226 @@
-# 🔐 IP Address Allow List Manager
+# 🛡️ Python IP Allow List Automation
 
-> A Python tool for automating IP-based access control — built for security teams and IT administrators.
+> Automating secure IP allow list management using Python to maintain access control and reduce manual administrative effort.
 
----
-
-## 📌 Overview
-
-**IP Address Allow List Manager** is an object-oriented Python tool that manages a file-based IP address allow list for any organization. It automates granting and revoking network access, validates every IP address, logs all changes, and works both as a **command-line tool** and an **importable Python module**.
-
-No external libraries required — pure Python 3.10+ standard library.
+![Python](https://img.shields.io/badge/Python-3.x-blue)
+![Cybersecurity](https://img.shields.io/badge/Domain-Cybersecurity-green)
+![Automation](https://img.shields.io/badge/Focus-Security%20Automation-orange)
+![License](https://img.shields.io/badge/License-MIT-yellow)
 
 ---
 
-## ✨ Features
+# Project Overview
 
-- ✅ Add or remove one or many IP addresses in a single command
-- ✅ O(1) lookup and removal using a `set` data structure
-- ✅ Validates every IP (IPv4 & IPv6) before making any change
-- ✅ Automatic duplicate removal when loading the allow list
-- ✅ Persistent, timestamped logging to `allow_list_changes.log`
-- ✅ One-command snapshot/backup of the current allow list
-- ✅ Configurable file path — works with any `.txt` allow list file
-- ✅ Clean summary output after every operation
+Managing IP allow lists manually can become time-consuming and error-prone, especially as organizations grow and access requirements change. This project demonstrates how Python can automate the process of maintaining an IP allow list by removing unauthorized IP addresses from an existing allow list.
+
+Originally completed as part of the **Google Cybersecurity Professional Certificate**, this repository expands upon the coursework by organizing the project into a professional GitHub repository with improved documentation, project structure, and maintainable source code.
 
 ---
 
-## 🗂️ Repository Structure
+# Scenario
 
-```
-📦 your-repo/
- ┣ 📜 update_allow_list.py     # AllowListManager class + CLI entry point
- ┣ 📄 allow_list.txt           # Your company's allow list (one IP per line)
- ┗ 📋 allow_list_changes.log   # Auto-generated on first run
-```
+An organization maintains a list of authorized IP addresses that are allowed to access restricted resources.
 
----
+Over time, some users no longer require access. Instead of manually editing the allow list, a security analyst uses a Python script to:
 
-## ⚙️ How It Works
+* Read the existing allow list
+* Compare it against a list of IP addresses that should be removed
+* Remove unauthorized entries
+* Generate an updated allow list
 
-The core of this project is the `AllowListManager` class. Here's what happens under the hood every time you use it:
-
-```
-  Instantiate
-      │
-      ▼
-  _load()  ──── reads allow_list.txt
-               splits into tokens
-               validates each IP        ──── invalid entries are warned & skipped
-               stores valid IPs in a set ──── duplicates are auto-collapsed
-      │
-      ▼
-  Operate  ──── remove_ips() / add_ips() / contains() / get_all()
-               all lookups are O(1) via the internal set
-      │
-      ▼
-  _save()  ──── only called when something actually changed
-               sorts IPs for readability
-               overwrites allow_list.txt
-      │
-      ▼
-  Logging  ──── every action written to terminal + allow_list_changes.log
-```
-
-### Why a `set`?
-
-IP addresses are stored internally as a Python `set`. This means:
-- **Lookup** — `"10.0.0.1" in manager` → O(1) average
-- **Remove** — `manager.remove_ips([...])` → O(1) per address
-- **No duplicates** — adding the same IP twice has no effect
-- **Scales** — performs the same whether your list has 100 or 100,000 entries
+Automating this process helps reduce administrative effort while minimizing the risk of human error.
 
 ---
 
-## 🚀 Getting Started
+# Objectives
 
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/<your-username>/<your-repo>.git
-cd <your-repo>
-```
-
-### 2. Set up your allow list
-
-Edit `allow_list.txt` and add your approved IP addresses, one per line:
-
-```
-192.168.1.1
-192.168.1.2
-10.0.0.5
-172.16.0.10
-```
-
-### 3. Run it
-
-```bash
-python update_allow_list.py --help
-```
+* Automate allow list maintenance
+* Demonstrate Python file handling
+* Apply basic security automation concepts
+* Improve accuracy by reducing manual edits
+* Reinforce access control best practices
 
 ---
 
-## 💻 CLI Usage
+# Skills Demonstrated
 
-The `--file` flag specifies your allow list. It defaults to `allow_list.txt` in the current directory, so you can omit it if using the default name.
+* Python Programming
+* Security Automation
+* File Input/Output (I/O)
+* String Manipulation
+* List Operations
+* Access Control
+* Secure Administration
+* Basic Scripting
 
-### Remove IPs (e.g. after a security incident)
+---
 
-```bash
-python update_allow_list.py remove 192.168.1.5 10.0.0.3
-```
+# Technologies Used
 
-### Add new IPs (e.g. onboarding employees)
+| Technology | Purpose                           |
+| ---------- | --------------------------------- |
+| Python 3   | Automation scripting              |
+| Text Files | Store allow list data             |
+| Git        | Version control                   |
+| GitHub     | Project hosting and documentation |
 
-```bash
-python update_allow_list.py add 10.0.0.99 172.16.0.1
-```
+---
 
-### Check if an IP is currently allowed
+# Project Structure
 
-```bash
-python update_allow_list.py check 192.168.1.5
-```
-
-```
-192.168.1.5  →  ✅ ON the allow list
-```
-
-### Print the full current allow list
-
-```bash
-python update_allow_list.py list
-```
-
-### Save a timestamped backup
-
-```bash
-python update_allow_list.py snapshot
-```
-
-```
-Snapshot saved to: allow_list_snapshot_20250301_143022.txt
-```
-
-### Use a custom file path
-
-```bash
-python update_allow_list.py --file /etc/security/approved_hosts.txt remove 10.0.0.3
+```text
+python-ip-allowlist-automation/
+│
+├── README.md
+├── LICENSE
+├── .gitignore
+│
+├── docs/
+│   └── Original_Google_Project.pdf
+│
+├── src/
+│   ├── update_allowlist.py
+│   ├── allow_list.txt
+│   ├── remove_list.txt
+│   └── updated_allow_list.txt
+│
+├── diagrams/
+│   └── workflow.png
+│
+├── screenshots/
+│   ├── before.png
+│   ├── terminal-output.png
+│   └── after.png
+│
+└── assets/
+    └── banner.png
 ```
 
 ---
 
-## 🐍 Module Usage
+# Workflow
 
-You can import `AllowListManager` directly into any Python script or pipeline:
-
-```python
-from update_allow_list import AllowListManager
-
-# Load your company's allow list
-manager = AllowListManager("allow_list.txt")
-
-# Remove IPs flagged in a security incident report
-result = manager.remove_ips(["192.168.25.6", "192.168.25.14"])
-print(result)
-# → {'removed': ['192.168.25.6', '192.168.25.14'], 'not_found': [], 'invalid': []}
-
-# Grant access to a new employee
-manager.add_ips(["10.0.0.45"])
-
-# Check access for a specific IP
-if "10.0.0.45" in manager:
-    print("Access granted")
-
-# See total number of allowed IPs
-print(len(manager))
-
-# Back up before a bulk change
-manager.export_snapshot()
-```
-
-### Full API Reference
-
-| Method | Description | Returns |
-|---|---|---|
-| `AllowListManager(filepath)` | Constructor — loads the file into memory | instance |
-| `remove_ips(list)` | Remove a list of IPs, save, and log | `dict` — removed / not_found / invalid |
-| `add_ips(list)` | Add a list of IPs, save, and log | `dict` — added / existing / invalid |
-| `contains(ip)` | Check if a single IP is on the list | `bool` |
-| `get_all()` | Return sorted list of all allowed IPs | `list[str]` |
-| `size()` | Number of IPs currently on the list | `int` |
-| `export_snapshot(path?)` | Save a dated backup of the allow list | `str` — path written to |
-| `len(manager)` | Same as `size()` | `int` |
-| `"x.x.x.x" in manager` | Same as `contains()` | `bool` |
-
----
-
-## 📋 Logging
-
-Every operation is automatically logged to both your terminal and `allow_list_changes.log`:
-
-```
-2025-03-01 14:30:22  [INFO]   Loaded 48 IP address(es) from 'allow_list.txt'.
-2025-03-01 14:30:22  [INFO]   REMOVED: 192.168.25.6
-2025-03-01 14:30:22  [INFO]   REMOVED: 192.168.25.14
-2025-03-01 14:30:22  [WARNING] NOT FOUND (already absent): 10.0.0.99
-2025-03-01 14:30:22  [INFO]   Saved 46 IP address(es) to 'allow_list.txt'.
+```text
+Read allow_list.txt
+          │
+          ▼
+Read remove_list.txt
+          │
+          ▼
+Compare IP Addresses
+          │
+          ▼
+Remove Unauthorized Entries
+          │
+          ▼
+Write Updated Allow List
+          │
+          ▼
+Process Complete
 ```
 
 ---
 
-## 🛠️ Requirements
+# Example Input
 
-- Python 3.10 or higher
-- No third-party packages — uses only the standard library (`argparse`, `ipaddress`, `logging`, `os`, `datetime`)
+### allow_list.txt
+
+```text
+192.168.1.10
+192.168.1.11
+192.168.1.12
+192.168.1.13
+```
+
+### remove_list.txt
+
+```text
+192.168.1.11
+192.168.1.13
+```
 
 ---
 
-## 📄 License
+# Example Output
 
-This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
+```text
+192.168.1.10
+192.168.1.12
+```
 
-© 2025 Panigrahi
+---
+
+# How It Works
+
+1. Read the current allow list.
+2. Load the list of IP addresses to remove.
+3. Compare both datasets.
+4. Remove matching IP addresses.
+5. Save the updated allow list.
+6. Confirm successful execution.
+
+---
+
+# Security Concepts
+
+This project demonstrates several foundational cybersecurity concepts:
+
+* Principle of Least Privilege
+* Access Control Management
+* Administrative Automation
+* Data Integrity
+* Secure Configuration Management
+* Operational Efficiency
+
+Although the project uses a simplified example, these same concepts are commonly applied in enterprise environments to automate administrative security tasks.
+
+---
+
+# Repository Contents
+
+| Folder      | Description                         |
+| ----------- | ----------------------------------- |
+| docs        | Original coursework PDF             |
+| src         | Python source code and sample files |
+| diagrams    | Workflow diagrams                   |
+| screenshots | Demonstration images                |
+| assets      | Repository graphics                 |
+
+---
+
+# Lessons Learned
+
+During this project I gained practical experience with:
+
+* Reading and writing files using Python
+* Automating repetitive security tasks
+* Working with lists and string manipulation
+* Organizing scripts for maintainability
+* Applying automation to access control processes
+
+---
+
+# Future Improvements
+
+Potential enhancements include:
+
+* Support for IPv6 addresses
+* IP address validation using Python's `ipaddress` module
+* Command-line arguments with `argparse`
+* Timestamped audit logging
+* Export change reports to JSON or CSV
+* Automated unit testing
+* Interactive command-line interface
+* Improved error handling and logging
+
+---
+
+# Acknowledgment
+
+The original project scenario was completed as part of the **Google Cybersecurity Professional Certificate**. This repository reorganizes and expands the original coursework into a portfolio-ready project with enhanced documentation and presentation while preserving the underlying learning objectives.
+
+---
+
+# License
+
+This project is licensed under the MIT License. See the `LICENSE` file for more information.
