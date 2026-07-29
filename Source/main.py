@@ -109,7 +109,7 @@ def main() -> None:
             removed_count=removed_count,
             invalid_count=invalid_allow + invalid_remove,
             remaining_count=len(updated_allow_list),
-            output_path=OUTPUT_FILE,
+            output_path=Path("data/updated_allow_list.txt"),
         )
 
         print(summary)
