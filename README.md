@@ -69,35 +69,26 @@ Instead of manually editing the file every time changes occur, this project auto
 ## 📂 Repository Structure
 
 ```
-python-ip-allowlist-automation
+python-ip-allowlist-automation/
 │
 ├── README.md
 ├── LICENSE
 ├── .gitignore
 │
-├── src/
-│   ├── update_allowlist.py
+├── data/
 │   ├── allow_list.txt
-│   ├── remove_list.txt
-│   └── updated_allow_list.txt
+│   └── remove_list.txt
 │
-├── docs/
-│   └── Original_Google_Project.pdf
-│
-├── diagrams/
-│   └── workflow.png
-│
-├── screenshots/
-│   ├── before.png
-│   ├── terminal-output.png
-│   └── after.png
-│
-├── assets/
-│   └── banner.png
+├── src/
+│   ├── __init__.py
+│   ├── main.py
+│   ├── file_handler.py
+│   ├── validator.py
+│   ├── allowlist_manager.py
+│   └── logger_config.py
 │
 └── tests/
-    ├── sample_allow_list.txt
-    └── sample_remove_list.txt
+    └── test_allowlist_manager.py
 ```
 
 ---
