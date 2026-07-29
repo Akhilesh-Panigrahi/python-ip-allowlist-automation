@@ -35,6 +35,9 @@ def remove_unauthorized_ips(
     return updated, removed_count
 
 
+from pathlib import Path
+
+
 def generate_summary(
     *,
     original_count: int,
@@ -45,29 +48,35 @@ def generate_summary(
     output_path: Path,
 ) -> str:
     """
-    Generate execution summary.
+    Generate a professional execution summary.
     """
 
+    divider = "=" * 60
+
     return f"""
-============================================================
-                EXECUTION SUMMARY
-============================================================
+{divider}
+            Python IP Allow List Automation
+{divider}
+
+✓ Allow list loaded successfully
+✓ Remove list loaded successfully
+✓ IP addresses validated
+✓ Unauthorized IP addresses removed
+✓ Updated allow list written
+
+----------------------- SUMMARY -----------------------
 
 Original Allow List : {original_count}
-
 Remove List Entries : {remove_count}
-
 Removed             : {removed_count}
-
 Invalid IPs         : {invalid_count}
-
 Remaining           : {remaining_count}
 
-Updated File
+Output File
 
 {output_path}
 
-============================================================
-Application completed successfully.
-============================================================
+✓ Application completed successfully.
+
+{divider}
 """.strip()

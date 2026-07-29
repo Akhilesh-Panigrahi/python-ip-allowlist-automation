@@ -14,7 +14,7 @@ def configure_logger() -> None:
     """
 
     logging.basicConfig(
-        level=logging.INFO,
+        level=logging.WARNING,
         format="[%(levelname)s] %(message)s",
         handlers=[
             logging.StreamHandler(sys.stdout)
