@@ -257,6 +257,24 @@ The original assignment has been expanded into a portfolio-quality project for e
 
 ---
 
+## 👨‍💻 Author
+ 
+**Akhilesh Panigrahi**
+ 
+🎓 A.S. in Computer Science and Information Security
+🛡️ Aspiring Cybersecurity Analyst
+📍 United States
+ 
+---
+ 
+⭐ Thanks for visiting!
+ 
+If you found this project useful, feel free to explore the other cybersecurity projects in my portfolio.
+ 
+**Learn → Build → Investigate → Improve**
+
+---
+
 ## 📄 License
 
 This project is licensed under the MIT License.
