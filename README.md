@@ -77,8 +77,8 @@ python-ip-allowlist-automation/
 │
 ├── data/
 │   ├── allow_list.txt
-│   └── remove_list.txt
-│
+│   ├── remove_list.txt
+│   └── updated_allow_list.txt
 ├── src/
 │   ├── __init__.py
 │   ├── main.py
