@@ -87,8 +87,12 @@ python-ip-allowlist-automation/
 │   ├── allowlist_manager.py
 │   └── logger_config.py
 │
-└── tests/
-    └── test_allowlist_manager.py
+├── tests/
+│   └── test_allowlist_manager.py
+│
+└── screenshots/
+    ├── application-output.png
+    └── allowlist-transformation.png   
 ```
 
 ---
@@ -136,7 +140,7 @@ cd python-ip-allowlist-automation
 ### Run the application
 
 ```bash
-python src/update_allowlist.py
+python src/main.py
 ```
 
 ---
@@ -171,6 +175,21 @@ python src/update_allowlist.py
 192.168.10.31
 10.0.0.8
 ```
+---
+
+## 📸 Project Screenshots
+
+### Application Execution
+
+The automation script processes the allow list and generates an updated file after removing unauthorized IP addresses.
+
+![Application execution](screenshots/application-output.png)
+
+### Allow List Transformation
+
+The input allow list is compared against the removal list, producing an updated allow list with unauthorized addresses removed.
+
+![Allow list transformation](screenshots/allowlist-transformation.png)
 
 ---
 
@@ -230,14 +249,12 @@ Compared to the original coursework, this Portfolio Edition includes:
 ## 🔮 Future Improvements
 
 - IPv6 support
-- IP address validation
 - Command-line interface
-- Audit logging
 - CSV import/export
 - JSON reporting
-- Unit tests
 - Docker container
 - GitHub Actions automation
+- Integration with centralized access-control systems
 
 ---
 
